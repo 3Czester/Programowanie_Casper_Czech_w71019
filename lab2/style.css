@@ -1,0 +1,41 @@
+article, section{
+    display: block;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 120px;
+    padding-right: 120px;
+    font-size: 20px;
+}
+article{
+    position: relative;
+    display: fixed;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 150px 120px;
+}
+.article-element{
+    width: 50%;
+}
+footer{
+    text-align: center;
+}
+section{
+    position: relative;
+}
+section::before{
+    content: '';
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+}
+section::after{
+    content: '';
+    display: block;
+    clear: both;
+}
+.sekcja{
+    width: 50%;
+}
