@@ -1,0 +1,226 @@
+<!-- <!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formularz rejestracji</title>
+    <style>
+        form {
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-family: Arial, sans-serif;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }       
+    </style>
+</head>
+<body>
+<form id="formularz">
+    <label for="first-name">Imię:</label>
+    <input type="text" id="first-name" name="first-name" required>
+    <span id="first-name-error" class="error-message"></span>
+
+    <label for="last-name">Nazwisko:</label>
+    <input type="text" id="last-name" name="last-name" required>
+    <span id="last-name-error" class="error-message"></span>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+    <span id="email-error" class="error-message"></span>
+
+    <label for="password">Hasło (min. 8 znaków):</label>
+    <input type="password" id="password" name="password" pattern=".{8,}" required title="Hasło musi zawierać co najmniej 8 znaków">
+    <span id="password-error" class="error-message"></span>
+
+    <label for="confirm-password">Powtórz hasło:</label>
+    <input type="password" id="confirm-password" name="confirm-password" required>
+    <span id="confirm-password-error" class="error-message"></span>
+
+    <label for="gender">Płeć:</label>
+    <select id="gender" name="gender" required>
+        <option value="mezczyzna">Mężczyzna</option>
+        <option value="kobieta">Kobieta</option>
+    </select>
+    <span id="gender-error" class="error-message"></span>
+
+    <label for="phone">Telefon:</label>
+    <input type="tel" id="telefon" name="telefon" required>
+    <span id="phone-error" class="error-message"></span>
+
+    <label for="birthdate">Data urodzenia:</label>
+    <input type="date" id="birthdate" name="birthdate" required>
+    <span id="birthdate-error" class="error-message"></span>
+
+    <label for="kraj">Kraj:</label>
+    <input type="text" id="kraj" name="kraj" required>
+    <span id="kraj-error" class="error-message"></span>
+
+    <input type="submit" value="Zarejestruj">
+</form>
+<script>
+    function isNotEmpty(value) {
+        return value.trim() !== '';
+    }
+
+    function isLengthValid(value, minLength) {
+        return value.length >= minLength;
+    }
+
+    function isValidEmail(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    }
+
+    function isPasswordStrong(password) {
+        return password.length >= 8;
+    }
+
+    function validateForm(event) {
+        event.preventDefault(); 
+
+        const form = document.getElementById('formularz');
+        const firstName = form['first-name'].value;
+        const lastName = form['last-name'].value;
+        const email = form['email'].value;
+        const password = form['password'].value;
+        const gender = form['gender'].value;
+        const phone = form['telefon'].value;
+        const birthdate = form['birthdate'].value;
+        const country = form['kraj'].value;
+
+        if (!isNotEmpty(firstName)) {
+            document.getElementById('first-name-error').textContent = 'Pole Imię jest wymagane.';
+        } else {
+            document.getElementById('first-name-error').textContent = '';
+        }
+
+        if (!isNotEmpty(lastName)) {
+            document.getElementById('first-name-error').textContent = 'Pole Imię jest wymagane.';
+        } else {
+            document.getElementById('first-name-error').textContent = '';}
+        }
+       
+
+        function isAdult(birthdate) {
+            const today = new Date();
+            const birthDate = new Date(birthdate);
+            const age = today.getFullYear() - birthDate.getFullYear();
+            const monthDiff = today.getMonth() - birthDate.getMonth();
+            if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+                age--;
+            }
+            return age >= 18;
+        }
+
+
+</script>
+</body> -->
+
+<!-- <!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formularz rejestracji</title>
+    <style>
+        form {
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-family: Arial, sans-serif;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<form id="registration-form">
+    <label for="first-name">Imię:</label>
+    <input type="text" id="first-name" name="first-name" required>
+    <span id="first-name-error" class="error-message"></span>
+
+
+    <label for="wojewodztwo">Województwo:</label>
+    <select id="wojewodztwo" name="wojewodztwo" disabled>
+
+    </select>
+    <span id="wojewodztwo-error" class="error-message"></span>
+
+    <label for="adres-zamieszkania">Adres zamieszkania:</label>
+    <input type="text" id="adres-zamieszkania" name="adres-zamieszkania" disabled>
+    <span id="adres-zamieszkania-error" class="error-message"></span>
+
+    <label>
+        <input type="checkbox" id="adres-checkbox"> Adres korespondencyjny jest taki sam jak adres zamieszkania
+    </label>
+
+    <div id="adres-korespondencyjny-container" style="display: none;">
+        <label for="adres-korespondencyjny">Adres korespondencyjny:</label>
+        <input type="text" id="adres-korespondencyjny" name="adres-korespondencyjny" disabled>
+        <span id="adres-korespondencyjny-error" class="error-message"></span>
+    </div>
+
+    <label for="phone">Telefon:</label>
+    <input type="text" id="phone" name="phone" required>
+    <span id="phone-error" class="error-message"></span>
+
+    <input type="submit" value="Zarejestruj">
+</form>
+
+<script>
+    function isNotEmpty(value) {
+        return value.trim() !== '';
+    }
+
+    function validateForm(event) {
+        event.preventDefault(); 
+
+        const form = document.getElementById('registration-form');
+        const firstName = form['first-name'].value;
+        const lastName = form['last-name'].value;
+        const email = form['email'].value;
+        const password = form['password'].value;
+        const confirmPassword = form['confirm-password'].value;
+        const gender = form['gender'].value;
+        const phone = form['phone'].value;
+        const birthdate = form['birthdate'].value;
+        const country = form['country'].value;
+        const wojewodztwo = form['wojewodztwo'].value;
+
+        if (country === 'Polska') {
+            document.getElementById('wojewodztwo').disabled = false;
+            document.getElementById('wojewodztwo-error').textContent = '';
+        } else {
+            document.getElementById('wojewodztwo').disabled = true;
+            document.getElementById('wojewodztwo-error').textContent = '';
+        }
+
+        if (document.getElementById('adres-checkbox').checked) {
+            document.getElementById('adres-korespondencyjny-container').style.display = 'none';
+        } else {
+            document.getElementById('adres-korespondencyjny-container').style.display = 'block';
+        }
+
+        if (form.checkValidity()) {
+            alert('Formularz został poprawnie wypełniony.');
+        }
+
+        form.reportValidity(); 
+    }
+
+    const form = document.getElementById('registration-form');
+    form.addEventListener('submit', validateForm);
+</script>
+
+</body>
+</html> -->
